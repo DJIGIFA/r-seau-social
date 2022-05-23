@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['connecter']))
+    {
+        header('Location:connection.php') ;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,17 +11,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connection</title>
+    <title>Home</title>
     <link href="assets/css/bootstrap.min.css" />
     <link href="assets/js/jquery-3.6.0.min.js" />
     <link href="assets/js/bootstrap.bundle.js" />
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
  
     
-
-    <nav class="navbar navbar-expand-lg bg-dark">
+<nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">RESEAU SOCIAL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,35 +35,8 @@
     </div>
   </div>
 </nav>
-</head>
-<body>
-    <div class="container bg-dark mt-4 pb-4">
-    <form>
-  <fieldset>
-    <legend class="text-center" >Connection</legend>
 
 
-    <div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Numéro *</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="votre numero" autocomplete="off" required>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">Password *</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-      
-    </div>
-
-   
-
-    <div class="container text-center mt-3">
-
-        <input class="btn bg-white " type="submit" name="se_connection" value="Se connecter" /> <br>
-        <a href="inscription.php"><small>Créer un compte  </small></a>
-    </div>
-
-</form>
-    </div>
 </body>
 
 
@@ -71,15 +47,6 @@
         color:white;
     }
     .navbar-brand:hover{
-        color:white;
-    }
-
-    form
-    {
-        color:white;
-    }
-
-    small{
         color:white;
     }
 
