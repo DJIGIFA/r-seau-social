@@ -1,0 +1,19 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    text-decoration: none;
+    color: white;
+}
+
+li{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.badge{
+    float:right;
+    margin-bottom:-15px;
+    margin-right:-18px;
+    font-size:10px;
+    background:blue;
+}
