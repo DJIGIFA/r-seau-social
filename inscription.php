@@ -1,5 +1,32 @@
 <?php 
     session_start();
+
+    if(isset($_GET['envoyer']) && isset($_GET['numero']) && isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['password']) && isset($_GET['password_confirmation']) )
+    {
+        $nom = trim( $_GET['nom']) ;
+        $prenom = trim( $_GET['prenom']) ;
+        $numero = trim( $_GET['numero']) ;
+
+        $password =  $_GET['password'] ;
+        $password_confirmation =  $_GET['password_confirmation'] ;
+
+        $hash = password_hash($password,PASSWORD_DEFAULT) ;
+
+        try {
+            $db = new PDO("mysql:host=localhost;dbname=reseau_social", 'root', '') ;
+
+            $requette = $db->prepare(" INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero`, `password`, `data_naissance`, `sexe`, `ville`) VALUES (NULL, '$nom', '$prenom', '$numero', '$hash', 'now()', '0', 'ville') ") ;
+
+            $requette->execute() ;
+            
+
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,28 +69,28 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Nom *</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nom" autocomplete="off" required>
+      <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nom" autocomplete="off" required>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Prénom *</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Prénom" autocomplete="off" required>
+      <input type="text" name="prenom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Prénom" autocomplete="off" required>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Numéro *</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="votre numero" autocomplete="off" required>
+      <input type="text" name="numero" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="votre numero" autocomplete="off" required>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">Password *</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">Confirmer Password *</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmer Password" required>
+      <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Confirmer Password" required>
       
     </div>
 
