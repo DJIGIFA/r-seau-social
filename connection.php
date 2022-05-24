@@ -61,23 +61,21 @@
 </head>
 <body>
     <div class="container mt-4 pb-4">
-    <form>
+    <form >
   <fieldset>
     <legend class="text-center" >Connection</legend>
 
 
     <div class="form-group">
       <label for="exampleInputEmail1" class="form-label mt-4">Numéro *</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="votre numero" autocomplete="off" required>
+      <input type="text" name="numero" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="votre numero" autocomplete="off" required>
       
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">Password *</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       
     </div>
-
-   
 
     <div class="container text-center mt-3">
 
@@ -87,7 +85,62 @@
 
 </form>
     </div>
-</body>
 
+<?php
+
+
+
+    if(isset($_GET['se_connection']) && isset($_GET['numero']) && isset($_GET['password']))
+    {
+        $numero = $_GET['numero'] ;
+        $password = $_GET['password'] ;
+
+        try {
+          
+          $db = new PDO("mysql:host=localhost;dbname=reseau_social", 'root', '') ;
+
+          //preparatino de la requette
+          $requette = $db->prepare("SELECT `password` FROM `utilisateur` WHERE `utilisateur`.`numero` = '$numero'  ") ;
+          // SELECT liste_des_colonnes FROM nom_de_la_table [WHERE condition]
+
+          //execution de la requette
+          $requette->execute() ;
+          
+          
+          $resultat = $requette->fetchAll() ;
+          //print_r($resultat) ; die() ;
+
+          $password_hash = $resultat[0]['password'] ;
+
+
+          //verification de password
+          if(password_verify($password,$password_hash))
+          {
+            //si mot de passe est bon
+
+            $_SESSION['connecter'] = "connecter" ;
+            header('Location:index.php') ;
+            
+          }else
+          {
+            //ici mettre les messages d'erreurs
+
+          }
+          
+
+
+        } catch (\Throwable $th) {
+          die("Une erreur s'est produite") ;
+        }
+
+
+
+    }else
+    {
+
+    }
+?>
+
+</body>
 
 </html>
