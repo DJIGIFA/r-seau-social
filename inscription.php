@@ -47,7 +47,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">RESEAU SOCIAL</a>
+    <a class="navbar-brand" href="index.php">RESEAU SOCIAL</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -58,23 +58,23 @@
       
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Les membres</a>
+          <a class="nav-link" href="membres.php">Les membres</a>
         </li>
         <li class="nav-item">
         <!-- <span class="badge badge-pill badge-warning">9+</span> -->
-          <a class="nav-link active" href="#">Les Invitations</a>
+          <a class="nav-link" href="invitations.php">Les Invitations</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="#">Mes Amies</a>
+          <a class="nav-link" href="amies.php">Mes Amies</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="#">Profil</a>
+          <a class="nav-link" href="profil.php">Profil</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="#">Connection</a>
+          <a class="nav-link" href="connection.php">Connection</a>
         </li>
     
       </ul>
